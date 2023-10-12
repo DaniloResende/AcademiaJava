@@ -1,9 +1,18 @@
+import java.time.LocalDate;
+
 public class Livro {
     private String titulo;
     private String autor;
     private String isbn;
     private boolean emprestado;
+    private LocalDate diaEmprestimo;
 
+    public LocalDate getDiaEmprestimo() {
+        return this.diaEmprestimo;
+    }
+    public void setDiaEmprestimo(LocalDate diaEmprestimo) {
+        this.diaEmprestimo = diaEmprestimo;
+    }
     public String getTitulo() {
         return this.titulo;
     }
@@ -50,6 +59,7 @@ public class Livro {
         else{
             System.out.println("Reserva realizada!");
             this.setEmprestado(true);
+            this.diaEmprestimo = LocalDate.now();
             return true;
         }
     }
