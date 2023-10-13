@@ -13,16 +13,24 @@ public class Biblioteca {
         this.catalogo = new ArrayList<Livro>();
     }
 
+    public ArrayList<Livro> getCatalogo() {
+        return this.catalogo;
+    }
+
+    public void setCatalogo(ArrayList<Livro> catalogo) {
+        this.catalogo = catalogo;
+    }
+
     // public boolean adicionar_livro(Livro livro){
     //     catalogo.add(livro);
     // }
-    private boolean adicionarLivro(String titulo, String autor, String isbn ){
+    public boolean adicionarLivro(String titulo, String autor, String isbn ){
     Livro novoLivro = new Livro( titulo,  autor,  isbn );
     this.catalogo.add(novoLivro);
     return true;
     }
 
-    private void removerLivro(String isbn){
+    public void removerLivro(String isbn){
         // int tamanhoCatalogo = this.catalogo.size();
         for (int i = 0; i < this.catalogo.size(); i++){
             Livro livroAtual = this.catalogo.get(i);
@@ -52,7 +60,7 @@ public class Biblioteca {
         return lista; // caso livro nao seja encontrado retorna null
     }
 
-    private Boolean emprestarLivro(String isbn){
+    public Boolean emprestarLivro(String isbn){
         for (Livro livro: this.catalogo){
             String isbnAtual = livro.getIsbn();
             if (isbnAtual.equals(isbn)){
@@ -67,7 +75,7 @@ public class Biblioteca {
         System.out.println("Livro não encontrado");
         return false;
     }
-    private void devolverLivro(String isbn){
+    public void devolverLivro(String isbn){
         for (Livro livro: this.catalogo){
             if (livro.getIsbn().equals(isbn)){
                 livro.devolver();
@@ -82,7 +90,8 @@ public class Biblioteca {
 
     public ArrayList<Livro> listarLivros(){
         for (Livro livro : this.catalogo) {
-            System.out.println(livro);
+            System.out.println(" titulo: " + livro.getTitulo() +
+            " autor: " + livro.getAutor() + " isbn: " + livro.getIsbn());
         }
         return this.catalogo;
     }
