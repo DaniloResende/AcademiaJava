@@ -14,6 +14,7 @@ public class Livro {
         this.diaEmprestimo = diaEmprestimo;
     }
     public String getTitulo() {
+        System.out.println(this.titulo);
         return this.titulo;
     }
     private void setTitulo(String titulo) {
@@ -85,8 +86,9 @@ public class Livro {
         if (this.getIsbn() != ""){
             System.out.println("Título: " + this.getTitulo() + "\n" +
                "Autor: " + this.getAutor() + "\n" +
-               "Emprestado: " + (this.isEmprestado() ? "O livro esta emprestado" : "Disponivel");
+               "Emprestado: " + (this.isEmprestado() ? "O livro esta emprestado" : "Disponivel"));
         }
+        return informacoes;
     }
     
 }
