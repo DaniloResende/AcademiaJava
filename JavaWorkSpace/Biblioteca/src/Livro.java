@@ -1,6 +1,6 @@
 import java.time.LocalDate;
 
-public class Livro {
+public class Livro implements Imprimivel {
     private String titulo;
     private String autor;
     private String isbn;
@@ -89,6 +89,17 @@ public class Livro {
                "Emprestado: " + (this.isEmprestado() ? "O livro esta emprestado" : "Disponivel"));
         }
         return informacoes;
+    }
+    @Override
+    public boolean imprimir() {
+        if (!this.emprestado) {
+        System.out.println("livro Impresso com sucesso!!");
+        return true;
+        } else {
+            System.out.println("Não foi possivel imprimir, livro emprestado no momento");
+            return false;
+        }
+
     }
     
 }

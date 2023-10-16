@@ -1,0 +1,3 @@
+interface Imprimivel {
+    boolean imprimir();
+}
