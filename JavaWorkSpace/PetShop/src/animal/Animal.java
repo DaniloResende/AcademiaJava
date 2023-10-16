@@ -1,3 +1,5 @@
+
+package animal;
 import java.time.LocalDate;
 
 public abstract class Animal {
@@ -6,6 +8,15 @@ public abstract class Animal {
     private String raca;
     private LocalDate dataNascimento;
     private String proprietario;
+    
+    public Animal(String nome, String especie, String raca, LocalDate dataNascimento, String proprietario) {
+        this.nome = nome;
+        this.especie = especie;
+        this.raca = raca;
+        this.dataNascimento = dataNascimento;
+        this.proprietario = proprietario;
+    }
+  
 
     public String getNome(){
         return this.nome;

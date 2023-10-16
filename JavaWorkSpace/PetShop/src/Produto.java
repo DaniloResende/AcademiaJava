@@ -4,6 +4,13 @@ public class Produto {
     private Float preco;
     private Integer quantidadeEstoque;
 
+    
+    public Produto(String nome, String categoria, Float preco, Integer quantidadeEstoque) {
+        this.nome = nome;
+        this.categoria = categoria;
+        this.preco = preco;
+        this.quantidadeEstoque = quantidadeEstoque;
+    }
     public String getNome(){
         return this.nome;
     }
