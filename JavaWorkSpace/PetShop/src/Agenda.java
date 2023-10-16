@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 import animal.Animal;
 import animal.Gato;
@@ -7,9 +8,7 @@ import servicos.Banho;
 import servicos.Servico;
 
 public class Agenda {
-    // private Animal animal; 
-    // MELHORIA A FAZER! E DUVIDA sobre como conectar o que o usuario digitou a classe 
-    // private Servico servico;
+    private static ArrayList<LocalTime> horarios = new ArrayList<>();
     private Animal animal; // classe animal  ou String?
     private Servico servico;
     private LocalDate data;
@@ -20,6 +19,7 @@ public class Agenda {
         this.servico = servico;
         this.data = data;
         this.horario = horario;
+        horarios.add(this.horario);
     }
 
     public Animal getAnimal() {
@@ -58,7 +58,17 @@ public class Agenda {
         setAnimal(animal);
         setServico(servico);
         setData(data);
-        setHorario(horario);
+        for (LocalTime elemento : horarios ) {
+            if (elemento.equals(horario) ) {
+                System.out.println("horário ja está ocupado");
+                return;
+            }
+        }
+            setHorario(horario);
+            horarios.add(horario);
+            System.out.println("horario agendado com sucesso!");
+        
+        
         System.out.printf("Serviço de: %s agendado com sucesso para o animal: %s, no dia: %s e no horario: %s ",
          getServico(), getAnimal(), getData(), getHorario());
     }

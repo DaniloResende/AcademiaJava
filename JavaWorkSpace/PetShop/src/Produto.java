@@ -1,4 +1,7 @@
+import java.util.ArrayList;
 public class Produto {
+    private ArrayList<Produto> produtosVendidos = new ArrayList<>();
+    private ArrayList<Produto> produtos = new ArrayList<>();
     private String nome;
     private String categoria;
     private Float preco;
@@ -10,6 +13,7 @@ public class Produto {
         this.categoria = categoria;
         this.preco = preco;
         this.quantidadeEstoque = quantidadeEstoque;
+        produtos.add(this); // adiciona o objeto atual ( criado agora ) à arraylist produtos
     }
     public String getNome(){
         return this.nome;
@@ -37,10 +41,23 @@ public class Produto {
         this.quantidadeEstoque = quantidade;
     }
 
-    public void vender(Integer quantidade){
-        if (this.quantidadeEstoque >= quantidade){
-            this.quantidadeEstoque -= quantidade;
+    public void vender(String nome, Integer quantidade){
+        for (Produto produto : produtos) {
+            if (produto.getNome().equals(nome)){
+                if (this.quantidadeEstoque >= quantidade){
+                continue;
+
+                }
+            } else {
+                System.out.println("Quantidade fornecida é maior do que o estoque ");
+                return;
+            }
+             
         }
+        this.quantidadeEstoque -= quantidade;
+        produtosVendidos.add( new Produto(nome, categoria, preco, quantidade));
+
+        
         
     }
 }

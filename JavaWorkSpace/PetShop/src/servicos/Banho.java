@@ -14,7 +14,7 @@ public class Banho extends Servico {
     public Float preco() {
         float preco = 50;
         // TODO Auto-generated method stub
-        System.out.println("o valor do Banho é de "+ preco +"reais");
+        System.out.println("o valor do Banho é de "+ preco +" reais");
         return preco;
     }
     
