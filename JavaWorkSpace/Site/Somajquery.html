@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soma de Valores</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<input type="text" id="valor1" placeholder="Digite o primeiro número">
+<input type="text" id="valor2" placeholder="Digite o segundo número">
+<button id="btnSomar">Somar</button>
+
+<script>
+    $('#btnSomar').click(function() {
+        var valor1 = parseFloat($('#valor1').val());
+        var valor2 = parseFloat($('#valor2').val());
+
+        if (isNaN(valor1) || isNaN(valor2)) {
+            alert('Por favor, insira valores numéricos válidos.');
+            return;
+        }
+
+        var resultado = valor1 + valor2;
+        alert('Resultado da soma: ' + resultado);
+    });
+</script>
+
+</body>
+</html>

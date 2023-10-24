@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificar Idade</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<input type="text" id="nome" placeholder="Digite seu nome">
+<input type="text" id="idade" placeholder="Digite sua idade">
+<button id="btnVerificar">Verificar</button>
+
+<script>
+    $('#btnVerificar').click(function() {
+        var nome = $('#nome').val();
+        var idade = parseInt($('#idade').val());
+
+        if (isNaN(idade)) {
+            alert('Por favor, insira uma idade válida.');
+            return;
+        }
+
+        if (idade >= 18) {
+            alert(nome + ' é maior de idade.');
+        } else {
+            alert(nome + ' é menor de idade.');
+        }
+    });
+</script>
+
+</body>
+</html>

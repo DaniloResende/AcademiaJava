@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificar Idade</title>
+</head>
+<body>
+
+<input type="text" id="nome" placeholder="Digite seu nome">
+<input type="text" id="idade" placeholder="Digite sua idade">
+<button onclick="Somar()">Somar</button>
+
+<script>
+    function Somar() {
+        var nome = document.getElementById('nome').value;
+        var idade = parseInt(document.getElementById('idade').value);
+
+        if (isNaN(idade)) {
+            alert('Por favor, insira uma idade válida.');
+            return;
+        }
+
+        if (idade >= 18) {
+            alert(nome + ' é maior de idade.');
+        } else {
+            alert(nome + ' é menor de idade.');
+        }
+    }
+</script>
+
+</body>
+</html>
