@@ -16,7 +16,8 @@ public class Main {
             ClienteDAO clienteDAO = new ClienteDAO(em);
             PedidoDAO pedidoDAO = new PedidoDAO(em);
 
-            em.getTransaction().begin();
+            // ao utilizar as classes DAO nao precisamos do begin e do commit no main, pois esses metodos estao encapuslados dentro de cada metodo da classse DAO
+            //em.getTransaction().begin();
 
             Cliente cliente = new Cliente("Juan", "juan@example.com", "Rua ABC, 123", "123456789");
             Cliente cliente2 = new Cliente("danilo", "danilo@example.com", "Rua ABC, 123", "123123123");
@@ -32,15 +33,11 @@ public class Main {
             pedidoDAO.criarPedido(pedido2, cliente2);
             pedidoDAO.criarPedido(pedido3, cliente3);
 
-            em.getTransaction().commit();
+            //em.getTransaction().commit();
 
             
 
-            
-
-
-
-
+        
             // Recupera o cliente do banco de dados usando o ID
             Cliente clienteRecuperado = clienteDAO.lerCliente(cliente.getId());
 
