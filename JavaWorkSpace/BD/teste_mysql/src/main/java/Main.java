@@ -13,35 +13,46 @@ public class Main {
             emf = Persistence.createEntityManagerFactory("academiajava");
             em = emf.createEntityManager();
 
+            ClienteDAO clienteDAO = new ClienteDAO(em);
+            PedidoDAO pedidoDAO = new PedidoDAO(em);
+
             em.getTransaction().begin();
 
             Cliente cliente = new Cliente("Juan", "juan@example.com", "Rua ABC, 123", "123456789");
+            Cliente cliente2 = new Cliente("danilo", "danilo@example.com", "Rua ABC, 123", "123123123");
+            Cliente cliente3 = new Cliente("richard", "richard@example.com", "Rua ABC, 123", "1231231");
+            clienteDAO.criarCliente(cliente);
+            clienteDAO.criarCliente(cliente2);
+            clienteDAO.criarCliente(cliente3);
 
             Pedido pedido1 = new Pedido(140.0, LocalDate.now(), "Em andamento", cliente.getEndereco());
-            pedido1.setCliente(cliente);
             Pedido pedido2 = new Pedido(180.0, LocalDate.now(), "Em andamento", cliente.getEndereco());
-            pedido2.setCliente(cliente);
             Pedido pedido3 = new Pedido(220.0, LocalDate.now(), "Em andamento", cliente.getEndereco());
-            pedido3.setCliente(cliente);
-
-            cliente.addPedido(pedido1);
-            cliente.addPedido(pedido2);
-            cliente.addPedido(pedido3);
-
-            
-            em.persist(cliente);
+            pedidoDAO.criarPedido(pedido1, cliente);
+            pedidoDAO.criarPedido(pedido2, cliente2);
+            pedidoDAO.criarPedido(pedido3, cliente3);
 
             em.getTransaction().commit();
 
-            PedidoDAO pedidoDAO = new PedidoDAO(em);
-            ClienteDAO clienteDAO = new ClienteDAO(em);
+            
+
+            
+
+
+
 
             // Recupera o cliente do banco de dados usando o ID
             Cliente clienteRecuperado = clienteDAO.lerCliente(cliente.getId());
 
+            Pedido pedidoRecuperado = pedidoDAO.lerPedido(pedido1.getId());
+
             // Imprime as informações do cliente e seus pedidos recuperados do banco de dados
             System.out.println("Cliente recuperado do banco de dados: " + clienteRecuperado);
             System.out.println("Pedidos do cliente: " + clienteRecuperado.getPedidos());
+
+            // Imprime as informações do pedido
+            System.out.println("Pedido recuperado do banco de dados: " + pedidoRecuperado);
+            System.out.println("Pedido pelo cliente: " + pedidoRecuperado.getCliente());
             
             //Atualiza o status do pedido
             pedidoDAO.atualizarStatusPedido(pedido2.getId(), "Concluído");
@@ -51,6 +62,9 @@ public class Main {
             
             // Atualiza o nome do cliente
             clienteDAO.atualizarCliente(clienteRecuperado.getId(), "João");
+
+            //deleta cliente 2 -> danilo
+            clienteDAO.deletarCliente(cliente2.getId());
 
             // Re-obtém o cliente do banco de dados após as alterações
             clienteRecuperado = clienteDAO.lerCliente(cliente.getId());

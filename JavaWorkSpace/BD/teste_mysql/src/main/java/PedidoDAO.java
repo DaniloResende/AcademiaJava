@@ -7,12 +7,13 @@ public class PedidoDAO {
     public PedidoDAO(EntityManager em) {
         this.em = em;
     }
-
-    public Pedido criarPedido(Pedido pedido) {
+// ao criar um pedido temos que passar um cliente para poder associar o pedido a esse cliente!
+    public Pedido criarPedido(Pedido pedido, Cliente cliente) {
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
         try {
             em.persist(pedido);
+            cliente.addPedido(pedido);
             transaction.commit();
             return pedido;
         } catch (Exception e) {
