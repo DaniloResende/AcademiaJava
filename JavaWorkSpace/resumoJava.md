@@ -373,6 +373,8 @@ public class Livro {
 
 ## Herança
 - **Heranca** -> mecanismo que permite que uma classe herde ``atributos e metodos`` de outra classe
+- Java nao permite Heranca multipla -> uma classe pode herdar somente de uma classe
+    - para isso utiliza interfaces
 
 
 
